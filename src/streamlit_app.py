@@ -45,7 +45,7 @@ def main():
     if 'qust_ans' not in st.session_state:
         st.session_state.qust_ans = []
     # Upload widget
-    file = st.file_uploader("Upload PDF", type=var, accept_multiple_files=True)     
+    file = st.file_uploader("Upload Your File", type=var, accept_multiple_files=True)     
  
 
     with st.sidebar:
