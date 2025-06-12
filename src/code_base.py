@@ -13,7 +13,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
-
+import streamlit as st
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 
@@ -21,8 +21,9 @@ from langchain.chains import ConversationalRetrievalChain
 
 
 load_dotenv()
-HUGFACE_API = os.getenv('HG_API')
-DEEPSEEK_TOKEN = os.getenv('DSEEK_API')
+
+HUGFACE_API = st.secrets['HG_API'] # os.getenv('HG_API')
+DEEPSEEK_TOKEN = st.secrets['DSEEK_API'] # os.getenv('DSEEK_API')
 
 
 def file_processor(file_path):
