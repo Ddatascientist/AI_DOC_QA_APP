@@ -40,6 +40,7 @@ def main():
     st.set_page_config(page_title="Ask_Your_Doc", layout="wide")
         
     st.title("Document Inquiry")
+    st.write("Upload your document, then choose a file from the dropdown")
     
     # create an empty list to store QA
     if 'qust_ans' not in st.session_state:
@@ -80,11 +81,13 @@ def main():
     # logit to control generate button            
     if generate:
         if not file:
-            st.error(body="Please upload a pdf file!!")
+            st.error(body="Please upload a file!!")
+        if not option:
+            st.error(body="Please select a file!!")
         if not prompt:
-            st.error("Please ask your question in the text area!!")
+            st.error("Please type in your question in the text area!!")
         else:
-            st.warning("⚠ please note; the larger the file size, the longer it MAY take to load")
+            st.warning("⚠ Please note, this is a free openai version, may take few minutes to load")
             with st.spinner(text="🔥 loading...."):
                 # Run model pipeline to receive AI answer
                 gen_answer = model_pipeline(file_doc, prompt)
